@@ -9,9 +9,34 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  Animation animation;
+  AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      duration: Duration(
+        milliseconds: 500,
+      ),
+      vsync: this,
+    );
+
+    animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+      parent: animationController,
+      curve: Curves.bounceIn,
+    ));
+
+    animationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -62,7 +87,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: <Widget>[
-                  FavoriteContacts(),
+                  AnimatedBuilder(
+                    animation: animationController,
+                    builder: (BuildContext context, Widget child) {
+                      return Transform(
+                        transform: Matrix4.translationValues(
+                          animation.value * width,
+                          0.0,
+                          0.0,
+                        ),
+                        child: FavoriteContacts(),
+                      );
+                    },
+                  ),
                   RecentChats(),
                 ],
               ),
