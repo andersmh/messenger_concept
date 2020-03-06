@@ -10,8 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Messenger Concept',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.red,
+        accentColor: Color(0xFFFEF9EB),
       ),
       home: HomeScreen(),
     );
