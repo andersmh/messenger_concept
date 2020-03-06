@@ -131,13 +131,24 @@ class _ChatScreenState extends State<ChatScreen> {
         iconTheme: IconThemeData(
           color: Colors.white,
         ),
-        title: Text(
-          widget.user.name,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28.0,
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircleAvatar(
+              backgroundImage: AssetImage(widget.user.imageUrl),
+            ),
+            SizedBox(
+              width: 5.0,
+            ),
+            Text(
+              widget.user.name,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
         actions: <Widget>[
           IconButton(
