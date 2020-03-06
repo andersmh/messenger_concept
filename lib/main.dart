@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
       title: 'Messenger Concept',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xFF4469B0),
-        accentColor: Color(0xFFFEF9EB),
+        primaryColor: Color(0xFF37C8F8),
+        accentColor: Color(0xFFE4FCFF),
       ),
       home: HomeScreen(),
     );

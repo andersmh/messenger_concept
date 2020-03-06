@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
+        brightness: Brightness.dark,
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(
@@ -27,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           'Chats',
           style: TextStyle(
+            color: Colors.white,
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
           ),
