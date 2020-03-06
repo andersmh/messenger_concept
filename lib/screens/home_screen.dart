@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:messenger_concept/models/message_model.dart';
-import 'package:messenger_concept/widgets/favorite_contacts.dart';
-import 'package:messenger_concept/widgets/recent_chats.dart';
+
 import '../widgets/category_selector.dart';
+import '../widgets/favorite_contacts.dart';
+import '../widgets/recent_chats.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(
                     30.0,
