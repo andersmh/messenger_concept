@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:messenger_concept/models/message_model.dart';
+import 'package:messenger_concept/screens/chat_screen.dart';
 
 class FavoriteContacts extends StatelessWidget {
   @override
@@ -46,28 +47,40 @@ class FavoriteContacts extends StatelessWidget {
                 left: 10.0,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Column(
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 35.0,
-                        backgroundImage: AssetImage(
-                          favorites[index].imageUrl,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ChatScreen(
+                          user: favorites[index],
                         ),
                       ),
-                      SizedBox(
-                        height: 6.0,
-                      ),
-                      Text(
-                        favorites[index].name,
-                        style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[
+                        CircleAvatar(
+                          radius: 35.0,
+                          backgroundImage: AssetImage(
+                            favorites[index].imageUrl,
+                          ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 6.0,
+                        ),
+                        Text(
+                          favorites[index].name,
+                          style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
