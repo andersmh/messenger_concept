@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen>
       vsync: this,
     );
 
-    animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
+    animation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
       parent: animationController,
       curve: Curves.fastOutSlowIn,
     ));
@@ -71,23 +71,7 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       body: Column(
         children: <Widget>[
-          AnimatedBuilder(
-            animation: animationController,
-            builder: (BuildContext context, Widget child) {
-              return Transform(
-                transform: Matrix4.translationValues(
-                  animation.value * width,
-                  0.0,
-                  0.0,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    CategorySelector(),
-                  ],
-                ),
-              );
-            },
-          ),
+          CategorySelector(),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
