@@ -19,14 +19,14 @@ class _HomeScreenState extends State<HomeScreen>
     super.initState();
     animationController = AnimationController(
       duration: Duration(
-        milliseconds: 500,
+        milliseconds: 1000,
       ),
       vsync: this,
     );
 
     animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
       parent: animationController,
-      curve: Curves.bounceIn,
+      curve: Curves.fastOutSlowIn,
     ));
 
     animationController.forward();
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen>
           onPressed: () => {},
         ),
         title: Text(
-          'Chats',
+          'Messenger',
           style: TextStyle(
             color: Colors.white,
             fontSize: 28.0,
@@ -71,7 +71,23 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       body: Column(
         children: <Widget>[
-          CategorySelector(),
+          AnimatedBuilder(
+            animation: animationController,
+            builder: (BuildContext context, Widget child) {
+              return Transform(
+                transform: Matrix4.translationValues(
+                  animation.value * width,
+                  0.0,
+                  0.0,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    CategorySelector(),
+                  ],
+                ),
+              );
+            },
+          ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -96,7 +112,11 @@ class _HomeScreenState extends State<HomeScreen>
                           0.0,
                           0.0,
                         ),
-                        child: FavoriteContacts(),
+                        child: Column(
+                          children: <Widget>[
+                            FavoriteContacts(),
+                          ],
+                        ),
                       );
                     },
                   ),
