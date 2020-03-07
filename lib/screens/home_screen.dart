@@ -50,12 +50,14 @@ class _HomeScreenState extends State<HomeScreen>
           color: Colors.white,
           onPressed: () => {},
         ),
-        title: Text(
-          'Messenger',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28.0,
-            fontWeight: FontWeight.bold,
+        title: Center(
+          child: Text(
+            'Messenger',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         actions: <Widget>[
